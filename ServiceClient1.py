@@ -5,7 +5,7 @@ service_registry_endpoint = 'http://52.21.65.56:5678'
 
 # Consulta o serviço de nomes para obter o endpoint do serviço de cálculo de novo salário
 lookup_data = {'name': 'salary_service'}
-response = requests.post(f'{service_registry_endpoint}/lookup', json=lookup_data)
+response = requests.get(f'{service_registry_endpoint}/lookup', json=lookup_data)
 salary_service_endpoint = response.json().get('endpoint')
 
 if salary_service_endpoint:
