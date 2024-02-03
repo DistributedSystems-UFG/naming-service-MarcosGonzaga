@@ -36,4 +36,4 @@ def unregister():
     return jsonify({'message': f'Service {service_name} unregistered successfully'})
 
 if __name__ == '__main__':
-    app_registry.run(host='52.21.65.56', port=5678)
+    app_registry.run(host='0.0.0.0', port=5678)
