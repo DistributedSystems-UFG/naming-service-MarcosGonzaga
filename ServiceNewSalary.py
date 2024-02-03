@@ -60,5 +60,4 @@ if __name__ == '__main__':
     response = requests.post('http://localhost:5000/register', json=registration_data)
     print(response.json())
   
-    app_salary.run(host='54.221.58.118', port=5678)
-
+    app_salary.run(host='0.0.0.0', port=5678)
