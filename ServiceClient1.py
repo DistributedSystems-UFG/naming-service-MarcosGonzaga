@@ -15,7 +15,7 @@ try:
 
     if salary_service_endpoint:
         # Faz uma requisição ao serviço de cálculo de novo salário
-        calculate_salary_endpoint = urljoin(f'http://{salary_service_endpoint}', '/calculate_salary')
+        calculate_salary_endpoint = urljoin(f'{salary_service_endpoint}', '/calculate_salary')
         calculate_data = {'current_salary': 3000, 'percent_increase': 15}
         response = requests.post(calculate_salary_endpoint, json=calculate_data)
         response.raise_for_status()
@@ -32,7 +32,7 @@ try:
 
         if employee_service_endpoint:
             # Atualiza o valor do salário do colaborador de id 201 no serviço "employee"
-            update_salary_endpoint = urljoin(f'http://{employee_service_endpoint}', '/empdb/employee/201')
+            update_salary_endpoint = urljoin(f'{employee_service_endpoint}', '/empdb/employee/201')
             update_data = {'salary': new_salary}
             response = requests.put(update_salary_endpoint, json=update_data)
             response.raise_for_status()
