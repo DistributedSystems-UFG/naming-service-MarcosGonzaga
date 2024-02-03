@@ -19,10 +19,10 @@ empDB = [
 ]
 
 # Endpoint do serviço de resolução de nomes
-service_registry_endpoint = 'http://localhost:5000'
+service_registry_endpoint = 'http://52.21.65.56:5678'
 
 # Dados de registro do serviço
-registration_data = {'name': 'employee_service', 'endpoint': 'http://localhost:5678'}
+registration_data = {'name': 'employee_service', 'endpoint': 'http://34.195.96.130:5678'}
 
 # Registrar o serviço no serviço de resolução de nomes ao iniciar
 response = requests.post(f'{service_registry_endpoint}/register', json=registration_data)
@@ -97,4 +97,4 @@ def averageSalary():
         abort(404, description="No employees in the database")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5678)
+    app.run(host='34.195.96.130', port=5678)
