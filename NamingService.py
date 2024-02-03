@@ -13,6 +13,7 @@ def register():
         abort(400, description="Invalid registration data")
 
     service_registry[service_name] = service_endpoint
+    print(f'Register request received - Service: {service_name}, Endpoint: {service_endpoint}')
     return jsonify({'message': f'Service {service_name} registered successfully'})
 
 @app_registry.route('/lookup', methods=['GET'])
@@ -23,6 +24,7 @@ def lookup():
         abort(404, description="Service not found")
 
     service_endpoint = service_registry[service_name]
+    print(f'Lookup request received - Service: {service_name}, Endpoint: {service_endpoint}')
     return jsonify({'endpoint': service_endpoint})
 
 @app_registry.route('/unregister', methods=['DELETE'])
@@ -33,6 +35,7 @@ def unregister():
         abort(404, description="Service not found")
 
     del service_registry[service_name]
+    print(f'Unregister request received - Service: {service_name}')
     return jsonify({'message': f'Service {service_name} unregistered successfully'})
 
 if __name__ == '__main__':
