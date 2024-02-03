@@ -1,7 +1,7 @@
 import requests
 
 # Endpoint do serviço de resolução de nomes
-service_registry_endpoint = 'http://localhost:5000'
+service_registry_endpoint = 'http://52.21.65.56:5678'
 
 # Consulta o serviço de nomes para obter o endpoint do serviço "employee"
 lookup_data = {'name': 'employee_service'}
