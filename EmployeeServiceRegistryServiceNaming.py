@@ -97,4 +97,4 @@ def averageSalary():
         abort(404, description="No employees in the database")
 
 if __name__ == '__main__':
-    app.run(host='34.195.96.130', port=5678)
+    app.run(host='0.0.0.0', port=5678)
