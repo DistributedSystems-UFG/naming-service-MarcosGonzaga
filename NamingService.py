@@ -12,8 +12,7 @@ def register():
     if not service_name or not service_endpoint:
         abort(400, description="Invalid registration data")
 
-    service_registry[service_name] = service_name
-    service_registry[service_endpoint] = service_endpoint
+    service_registry[service_name] = service_endpoint
     print(f'Register request received - Service: {service_name}, Endpoint: {service_endpoint}')
     return jsonify({'message': f'Service {service_name} registered successfully'})
 
