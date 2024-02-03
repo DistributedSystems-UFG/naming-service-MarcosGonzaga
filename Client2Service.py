@@ -4,8 +4,10 @@ import requests
 service_registry_endpoint = 'http://52.21.65.56:5678'
 
 # Consulta o serviço de nomes para obter o endpoint do serviço "employee"
-lookup_data = {'name': 'employee_service'}
-response = requests.post(f'{service_registry_endpoint}/lookup', json=lookup_data)
+lookup_data = {'name': 'salary_service'}
+response = requests.get(urljoin(service_registry_endpoint, '/lookup'), params=lookup_data)
+response.raise_for_status()
+
 employee_service_endpoint = response.json().get('endpoint')
 
 if employee_service_endpoint:
