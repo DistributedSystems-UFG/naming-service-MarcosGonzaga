@@ -25,7 +25,7 @@ try:
 
         # Consulta o serviço de nomes para obter o endpoint do serviço "employee"
         lookup_data = {'name': 'employee_service'}
-        response = requests.post(urljoin(service_registry_endpoint, '/lookup'), json=lookup_data)
+        response = requests.get(urljoin(service_registry_endpoint, '/lookup'), params=lookup_data)
         response.raise_for_status()
 
         employee_service_endpoint = response.json().get('endpoint')
