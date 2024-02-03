@@ -28,17 +28,25 @@ registration_data = {'name': 'employee_service', 'endpoint': 'http://34.195.96.1
 response = requests.post(f'{service_registry_endpoint}/register', json=registration_data)
 print(response.json())
 
+def log_request_data():
+    print(f"Received Request: {request.method} {request.url}")
+    print(f"Headers: {request.headers}")
+    print(f"JSON Data: {request.json}")
+
 @app.route('/empdb/employee', methods=['GET'])
 def getAllEmp():
+    log_request_data()
     return jsonify({'emps': empDB})
 
 @app.route('/empdb/employee/<empId>', methods=['GET'])
 def getEmp(empId):
+    log_request_data()
     usr = [emp for emp in empDB if emp['id'] == empId]
     return jsonify({'emp': usr})
 
 @app.route('/empdb/employee/<empId>', methods=['PUT'])
 def updateEmp(empId):
+    log_request_data()
     em = [emp for emp in empDB if emp['id'] == empId]
 
     if len(em) > 0:
@@ -54,6 +62,7 @@ def updateEmp(empId):
 
 @app.route('/empdb/employee/<empId>/<empSal>', methods=['PUT'])
 def updateEmpSal(empId, empSal):
+    log_request_data()
     em = [emp for emp in empDB if emp['id'] == empId]
 
     if len(em) > 0:
@@ -64,6 +73,7 @@ def updateEmpSal(empId, empSal):
 
 @app.route('/empdb/employee', methods=['POST'])
 def createEmp():
+    log_request_data()
     dat = {
         'id': request.json['id'],
         'name': request.json['name'],
@@ -79,6 +89,7 @@ def createEmp():
 
 @app.route('/empdb/employee/<empId>', methods=['DELETE'])
 def deleteEmp(empId):
+    log_request_data()
     em = [emp for emp in empDB if emp['id'] == empId]
 
     if len(em) > 0:
@@ -89,6 +100,7 @@ def deleteEmp(empId):
 
 @app.route('/empdb/employee/average_salary', methods=['GET'])
 def averageSalary():
+    log_request_data()
     if len(empDB) > 0:
         total_salary = sum(float(emp['salary']) for emp in empDB)
         average_salary = total_salary / len(empDB)
