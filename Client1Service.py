@@ -7,7 +7,7 @@ service_registry_endpoint = 'http://52.21.65.56:5678'
 
 try:
     # Consulta o serviço de nomes para obter o endpoint do serviço de cálculo de novo salário
-    lookup_data = {'name': 'employee_service'}
+    lookup_data = {'name': 'salary_service'}
     response = requests.get(urljoin(service_registry_endpoint, '/lookup'), params=lookup_data)
     response.raise_for_status()
 
