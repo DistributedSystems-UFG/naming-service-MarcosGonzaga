@@ -55,9 +55,4 @@ def migrate():
     return jsonify({'message': 'Service migration completed'})
 
 if __name__ == '__main__':
-    # Registro no serviço de resolução de nomes ao iniciar
-    registration_data = {'name': 'salary_service', 'endpoint': 'http://localhost:6000'}
-    response = requests.post('http://localhost:5000/register', json=registration_data)
-    print(response.json())
-  
     app_salary.run(host='0.0.0.0', port=5678)
