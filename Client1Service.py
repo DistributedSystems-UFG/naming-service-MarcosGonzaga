@@ -20,7 +20,7 @@ try:
         response = requests.post(calculate_salary_endpoint, json=calculate_data)
         response.raise_for_status()
 
-        old_salary = calculate_data.json().get('current_salary')
+        old_salary = calculate_data.get('current_salary')
         print(f'Salário antigo do funcionário: {old_salary}')
 
         new_salary = response.json().get('new_salary')
