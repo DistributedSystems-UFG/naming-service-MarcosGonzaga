@@ -11,7 +11,7 @@ salary_service_endpoint = response.json().get('endpoint')
 
 if salary_service_endpoint:
     # Faz uma requisição ao serviço de cálculo de novo salário
-    calculate_salary_endpoint = f'{salary_service_endpoint}/calculate_salary'
+    calculate_salary_endpoint = f'http://{salary_service_endpoint}/calculate_salary'
     calculate_data = {'current_salary': 3000, 'percent_increase': 15}
     response = requests.post(calculate_salary_endpoint, json=calculate_data)
 
@@ -21,14 +21,14 @@ if salary_service_endpoint:
 
         # Consulta o serviço de nomes para obter o endpoint do serviço "employee"
         lookup_data = {'name': 'employee_service'}
-        response = requests.post(f'{service_registry_endpoint}/lookup', json=lookup_data)
+        response = requests.post(f'http://{service_registry_endpoint}/lookup', json=lookup_data)
 
         if response.status_code == 200:
             employee_service_endpoint = response.json().get('endpoint')
 
             if employee_service_endpoint:
                 # Atualiza o valor do salário do colaborador de id 201 no serviço "employee"
-                update_salary_endpoint = f'{employee_service_endpoint}/empdb/employee/201'
+                update_salary_endpoint = f'http://{employee_service_endpoint}/empdb/employee/201'
                 update_data = {'salary': new_salary}
                 response = requests.put(update_salary_endpoint, json=update_data)
 
