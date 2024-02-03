@@ -1,4 +1,5 @@
 import requests
+from urllib.parse import urljoin
 
 # Endpoint do serviço de resolução de nomes
 service_registry_endpoint = 'http://52.21.65.56:5678'
