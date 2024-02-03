@@ -5,10 +5,10 @@ import atexit
 app_salary = Flask(__name__)
 
 # Endpoint do serviço de resolução de nomes
-service_registry_endpoint = 'http://localhost:5000'
+service_registry_endpoint = 'http://52.21.65.56:5678'
 
 # Dados de registro do serviço de cálculo de salário
-registration_data = {'name': 'salary_service', 'endpoint': 'http://localhost:6000'}
+registration_data = {'name': 'salary_service', 'endpoint': 'http://54.221.58.118:5678'}
 
 # Registrar o serviço de cálculo de salário no serviço de resolução de nomes ao iniciar
 response = requests.post(f'{service_registry_endpoint}/register', json=registration_data)
@@ -60,5 +60,5 @@ if __name__ == '__main__':
     response = requests.post('http://localhost:5000/register', json=registration_data)
     print(response.json())
   
-    app_salary.run(host='0.0.0.0', port=6000)
+    app_salary.run(host='54.221.58.118', port=5678)
 
