@@ -30,7 +30,6 @@ print(response.json())
 
 def log_request_data():
     print(f"Received Request: {request.method} {request.url}")
-    print(f"Headers: {request.headers}")
     print(f"JSON Data: {request.json}")
 
 @app.route('/empdb/employee', methods=['GET'])
