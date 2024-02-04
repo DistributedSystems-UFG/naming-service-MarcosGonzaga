@@ -66,7 +66,7 @@ def updateEmp(empId):
     else:
         abort(404, description="Employee not found")
 
-@app.route('/empdb/employee/<empId>/<empSal>', methods=['PUT'])
+@app.route('/empdb/employee', methods=['PUT'])
 def updateEmpSal(empId, empSal):
     log_request_data()
     em = [emp for emp in empDB if emp['id'] == empId]
