@@ -74,7 +74,7 @@ def updateEmpSal():
     empId = request.json.get('empId')
     empSal = request.json.get('empSal')
 
-    print('empId e empSal atualizados!', emId, empSal)
+    print('empId e empSal atualizados!', empId, empSal)
     em = [emp for emp in empDB if emp['id'] == empId]
 
     print(em)
