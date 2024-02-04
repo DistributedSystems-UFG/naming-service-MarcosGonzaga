@@ -1,6 +1,5 @@
 import requests
 from urllib.parse import urljoin
-from requests.exceptions import RequestException
 
 # Endpoint do serviço de resolução de nomes
 service_registry_endpoint = 'http://52.21.65.56:5678'
@@ -36,8 +35,8 @@ try:
         if employee_service_endpoint:
             # Atualiza o valor do salário do colaborador de id 201 no serviço "employee"
             update_salary_endpoint = urljoin(f'{employee_service_endpoint}', '/empdb/employee')
-            update_data = {'empid': 201, 'empsal': new_salary}
-            response = requests.put(update_salary_endpoint, params=update_data)
+            update_data = {'empId': 201, 'empSal': new_salary}
+            response = requests.put(update_salary_endpoint, json=update_data)
             response.raise_for_status()
 
             updated_salary = response.json().get('new_salary')
@@ -49,5 +48,5 @@ try:
     else:
         print('Endpoint do serviço de cálculo de salário não encontrado no serviço de nomes.')
 
-except RequestException as e:
+except requests.exceptions.RequestException as e:
     print(f"Erro na solicitação: {e}")
