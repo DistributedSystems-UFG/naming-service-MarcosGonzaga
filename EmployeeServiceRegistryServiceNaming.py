@@ -69,7 +69,7 @@ def updateEmp(empId):
 @app.route('/empdb/employee', methods=['PUT'])
 def updateEmpSal(empId, empSal):
     log_request_data()
-    em = [emp for emp in empDB if emp['id'] == empId]
+    em = [emp for emp in empDB if emp['id'] == request.json['empId']]
 
     if len(em) > 0:
         em[0]['salary'] = request.json['empSal']
