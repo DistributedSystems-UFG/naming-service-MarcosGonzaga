@@ -72,7 +72,7 @@ def updateEmpSal(empId, empSal):
     em = [emp for emp in empDB if emp['id'] == empId]
 
     if len(em) > 0:
-        em[0]['salary'] = empSal
+        em[0]['salary'] = request.json['empSal']
         return jsonify({'new_salary': emp[0]['salary']})
     else:
         abort(404, description="Employee not found")
