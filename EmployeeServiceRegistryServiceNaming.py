@@ -76,7 +76,7 @@ def updateEmpSal():
 
     print('empId e empSal atualizados!', empId, empSal)
     print('empDB: ', empDB)
-    em = [emp for emp in empDB if emp['id'] == empId] print('emp', emp)
+    em = [emp for emp in empDB if int(emp['id']) == int(empId)]
 
     print('em: ', em)
     if len(em) > 0:
