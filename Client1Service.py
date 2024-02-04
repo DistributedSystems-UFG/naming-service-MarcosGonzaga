@@ -40,7 +40,7 @@ try:
             response = requests.put(update_salary_endpoint, json=update_data)
             response.raise_for_status()
 
-            updated_salary = response.json().get('new_salary')
+            updated_salary = response.json().get('salary')
             print(f'Novo valor do salário do funcionário (ID 201): {updated_salary}')
 
         else:
