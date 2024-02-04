@@ -69,12 +69,8 @@ def updateEmp(empId):
 @app.route('/empdb/employee', methods=['PUT'])
 def updateEmpSal():
     log_request_data()
-    
     empId = request.json.get('empId')
     empSal = request.json.get('empSal')
-
-    if not empId or not empSal:
-        abort(400, description="Invalid request data")
 
     em = [emp for emp in empDB if emp['id'] == empId]
 
