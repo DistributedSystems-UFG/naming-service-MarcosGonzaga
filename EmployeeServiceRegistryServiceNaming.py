@@ -28,6 +28,12 @@ registration_data = {'name': 'employee_service', 'endpoint': 'http://34.195.96.1
 response = requests.post(f'{service_registry_endpoint}/register', json=registration_data)
 print(response.json())
 
+# Função para desregistro ao encerrar o serviço
+@atexit.register
+def unregister_service():
+    response = requests.delete(f'{service_registry_endpoint}/unregister?name={registration_data["name"]}')
+    print(response.json())
+
 def log_request_data():
     print(f"Received Request: {request.method} {request.url}")
     print(f"JSON Data: {request.json}")
