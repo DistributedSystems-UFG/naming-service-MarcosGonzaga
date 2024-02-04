@@ -74,9 +74,10 @@ def updateEmpSal():
     empId = request.json.get('empId')
     empSal = request.json.get('empSal')
 
-    print('empId e empSal atualizados!')
+    print('empId e empSal atualizados!', imId, empSal)
     em = [emp for emp in empDB if emp['id'] == empId]
 
+    print(em)
     if len(em) > 0:
         em[0]['salary'] = empSal
         return jsonify({'new_salary': em[0]['salary']})
