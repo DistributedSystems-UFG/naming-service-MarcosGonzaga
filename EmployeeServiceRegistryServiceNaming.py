@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, abort
 import requests
+import atexit
 
 app = Flask(__name__)
 
