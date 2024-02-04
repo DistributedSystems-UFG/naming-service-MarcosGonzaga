@@ -67,13 +67,20 @@ def updateEmp(empId):
         abort(404, description="Employee not found")
 
 @app.route('/empdb/employee', methods=['PUT'])
-def updateEmpSal(empId, empSal):
+def updateEmpSal():
     log_request_data()
-    em = [emp for emp in empDB if emp['id'] == request.json['empId']]
+    
+    empId = request.json.get('empId')
+    empSal = request.json.get('empSal')
+
+    if not empId or not empSal:
+        abort(400, description="Invalid request data")
+
+    em = [emp for emp in empDB if emp['id'] == empId]
 
     if len(em) > 0:
-        em[0]['salary'] = request.json['empSal']
-        return jsonify({'new_salary': emp[0]['salary']})
+        em[0]['salary'] = empSal
+        return jsonify({'new_salary': em[0]['salary']})
     else:
         abort(404, description="Employee not found")
 
