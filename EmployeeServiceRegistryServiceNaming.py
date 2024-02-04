@@ -73,9 +73,10 @@ def updateEmpSal(empId, empSal):
 
     if len(em) > 0:
         em[0]['salary'] = empSal
-        return jsonify(em[0].salary)
+        return jsonify({'new_salary': em[0]['salary']})
     else:
         abort(404, description="Employee not found")
+
 
 @app.route('/empdb/employee', methods=['POST'])
 def createEmp():
