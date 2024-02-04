@@ -36,6 +36,8 @@ def unregister_service():
     print(response.json())
 
 def log_request_data():
+    app.logger.info('Headers: %s', request.headers)
+    app.logger.info('Body: %s', request.get_data())
     print(f"Received Request: {request.method} {request.url}")
     print(f"JSON Data: {request.json}")
 
