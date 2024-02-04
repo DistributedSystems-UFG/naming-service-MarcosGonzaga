@@ -36,7 +36,7 @@ try:
             # Atualiza o valor do salário do colaborador de id 201 no serviço "employee"
             update_salary_endpoint = urljoin(f'{employee_service_endpoint}', '/empdb/employee')
             update_data = {'empId': 201, 'empSal': new_salary}
-            response = requests.put(update_salary_endpoint, json=update_data)
+            response = requests.put(update_salary_endpoint, params=update_data)
             response.raise_for_status()
 
             updated_salary = response.json().get('new_salary')
